@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Random Greeting</h1>
+
+    <button id="get-greeting">Greet Me</button>
+
+    <div id="greeting"></div>
+
+    <script>
+
+        let getGreeting = document.getElementById("get-greeting");
+        let greeting = document.getElementById("greeting");
+        let greetingList;
+
+        async function getGreetings() {
+
+            const response = await fetch("greetings.json");
+            console.log(response);
+
+            const data = await response.json();
+            console.log(data);
+
+            greetingList = data.greetings;
+            console.log(greetingList);
+            
+        }
+
+        getGreetings();
+
+        getGreeting.addEventListener("click", function(){
+
+            alert(greetingList[3]);
+
+        })
+
+        /*
+        - Change the topic of the JSON
+        - On click get a radnom item
+        - Display itme in DOM (the HTML) not alert()
+        */
+
+    </script>
+    
+</body>
+</html>
